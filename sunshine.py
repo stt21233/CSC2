@@ -5,7 +5,6 @@ Then create the labels and buttons"""
 
 from tkinter import *
 root = Tk()
-
 # quit subroutine
 def quit():
     main_window.destroy()
