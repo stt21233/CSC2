@@ -18,14 +18,5 @@ listBox.insert(2, "C#")
 listBox.insert(3, "PHP")
 listBox.pack(pady=25)
 
-def print_me():
-
-# create buttons
-button = Button(root, text='print', command=print_me).place(x=300, y=300)
-button2 = Button(root, text='Delete', command=delete_me).place(x=350, y=300)
-# for these you need callback function and  want you to figure out
-# how to write this out and ensure you are able to Print and also Delete items from the list
-
-
 root.geometry("650x650+650+200")
-root.mainloop
+root.mainloop()

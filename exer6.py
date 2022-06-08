@@ -3,7 +3,7 @@ from tkinter import ttk
 
 import main
 
-root=Tk()
+root=Tk()x
 def callback():
     val1=entry.get()
     val2=entry2.get()
