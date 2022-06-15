@@ -1,7 +1,11 @@
+#############################################################
+############   **** JULIES ITEM TRACKER ****   ##############
+#############################################################
+
 from tkinter import *
 
 main_window = Tk()
-# entry boxes for customer details and buttons
+# entry boxes details and buttons
 Label(main_window, text="Customer full name", font=("Helvetica bold", 9)).grid(row=1, column=1)
 entry_name = Entry(main_window)
 entry_name.grid(row=2, column= 1)
@@ -24,6 +28,43 @@ Button(main_window, text="Delete button",font=("Helvetica bold", 8)).grid(row=8,
 Button(main_window, text="Quit program", font=("Helvetica bold", 8)).grid(row=0, column=21)
 
 
+# Print Tracker Details
+def print_tracker_details():
+    # Variables that are used
+    global j_name, total_entries, name_count
+    name_count = 0
+    # Create the column headings
+    Label(main_window, font=("Helvetica 10 bold"),
+          text="Customer Full Name").grid(column=0, row=7)
+    Label(main_window, font=("Helvetica 10 bold"),
+          text="Receipt Number").grid(column=1, row=7)
+    Label(main_window, font=("Helvetica 10 bold"),
+          text="Item Hired").grid(column=2, row=7)
+    Label(main_window, font=("Helvetica 10 bold"),
+          text="Number of Hired items").grid(column=3, row=7)
+    Label(main_window, font=("Helvetica 10 bold"))
+
+# add each item in the list into its own row
+    while name_count < total_entries:
+        Label(main_window, text=name_count).grid(column=0, row=name_count+8)
+        Label(main_window, text=(print_tracker_details[name_count][0])).grid(
+            column=1, row=name_count+8)
+        Label(main_window, text=(print_tracker_details[name_count][1])).grid(
+            column=2, row=name_count+8)
+        Label(main_window, text=(print_tracker_details[name_count][2])).grid(
+            column=3, row=name_count+8)
+        Label(main_window, text=(print_tracker_details[name_count][3])).grid(
+            column=4, row=name_count+8)
+        name_count += 1
+
+
+
+
+
+
+
+
+
 
 # Create GUI and make sure entry boxes and button are appearing
 def main():
@@ -34,8 +75,8 @@ def main():
     customer_details = []
     total_entries = 0
     # create the GUI and start it up
-
     main_window.mainloop()
+
 
 main()
 
