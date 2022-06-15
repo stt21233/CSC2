@@ -1,6 +1,6 @@
 from tkinter import *
 
-
+main_window = Tk()
 # entry boxes for customer details and buttons
 Label(main_window, text="Customer full name", font=("Helvetica bold"), size=14).grid(row=4, column= 1)
 entry_name = Entry(main_window)
@@ -34,10 +34,10 @@ def main():
     customer_details = []
     total_entries = 0
     # create the GUI and start it up
-    main_window = Tk()
+
     main_window.mainloop()
 
-
+main()
 
 
 
