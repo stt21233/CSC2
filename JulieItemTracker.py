@@ -37,32 +37,30 @@ def setup_buttons():
 def check_inputs():
     global entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
     input_check = 0
-    Label(main_window, text="               ").grid(column=2, row=0)
-    Label(main_window, text="               ").grid(column=2, row=1)
     Label(main_window, text="               ").grid(column=2, row=2)
-    Label(main_window, text="               ").grid(column=2, row=3)
-    # Check that leader is not blank, set error text if blank
+    Label(main_window, text="               ").grid(column=2, row=4)
+    Label(main_window, text="               ").grid(column=2, row=6)
+    Label(main_window, text="               ").grid(column=2, row=8)
+    # Check that Customer full name is not blank, set error text if blank
     if len(entry_name.get()) == 0:
-        Label(main_window, fg="red", text="Required").grid(column=2, row=0)
+        Label(main_window, fg="red", text="Requiredc1").grid(column=2, row=2)
         input_check = 1
-    # Check that location is not blank, set error text if blank
-    if len(entry_receipt.get()) == 0:
-        Label(main_window, fg="red", text="Required").grid(column=2, row=1)
-        input_check = 1
-    # Check the number of campers is not blank and between 5 and 10, set error text if blank
+    # Check the number of receipt number is not blank and is a integer, set error text if blank
     if (entry_receipt.get().isdigit()):
         if int(entry_receipt.get()) < 100000000 or int(entry_receipt.get()) > 999999999:
-            Label(main_window, fg="red", text="100 000 000-999 999 999 only").grid(column=2, row=2)
+            Label(main_window, fg="red", text="numerical only").grid(column=2, row=4)
             input_check = 1
     else:
-        Label(main_window, fg="red", text="5-10 only").grid(column=2, row=2)
+        Label(main_window, fg="red", text="required").grid(column=2, row=4)
         input_check = 1
-    # Check that weather is not blank, set error text if blank
+     # Check that Item hired is not blank, set error text if blank
+    if len(entry_hired_item.get()) == 0:
+        Label(main_window, fg="red", text="Requiredc1").grid(column=2, row=6)
+        input_check = 1
+    # Check that number of hired is not blank and is between 1-500, set error text if blank
     if len(entry_number_of_hired_item.get()) == 0:
-        Label(main_window, fg="red", text="Required").grid(column=2, row=3)
+        Label(main_window, fg="red", text="Required.nofht").grid(column=2, row=8)
         input_check = 1
-    if input_check == 0:
-        append_name()
 
 
 
@@ -81,9 +79,9 @@ def append_name():
 
 def delete_row():
     # these are the global variables that are used
-    global camp_details, delete_item, total_entries, name_count
+    global print_tracker_details, delete_item, total_entries, name_count
     # find which row is to be deleted and delete it
-    del camp_details[int(delete_item.get())]
+    del print_tracker_details[int(delete_item.get())]
     total_entries = total_entries - 1
     delete_item.delete(0, 'end')
     # clear the last item displayed on the GUI
@@ -102,13 +100,13 @@ def print_tracker_details():
     name_count = 0
     # Create the column headings
     Label(main_window, font=("Helvetica 10 bold"),
-          text="Customer Full Name").grid(column=10, row=2)
+          text="Customer Full Name").grid(column=11, row=2)
     Label(main_window, font=("Helvetica 10 bold"),
-          text="Receipt Number").grid(column=11, row=2)
+          text="Receipt Number").grid(column=12, row=2)
     Label(main_window, font=("Helvetica 10 bold"),
-          text="Item Hired").grid(column=12, row=2)
+          text="Item Hired").grid(column=13, row=2)
     Label(main_window, font=("Helvetica 10 bold"),
-          text="Number of Hired items").grid(column=13, row=2)
+          text="Number of Hired items").grid(column=14, row=2)
     Label(main_window, font=("Helvetica 10 bold"))
 
 # add each item in the list into its own row
