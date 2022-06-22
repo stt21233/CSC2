@@ -20,16 +20,16 @@ def setup_buttons():
     Label(main_window, text="Number of hired items",font=("Helvetica", 9)).grid(row=7, column=1)
     entry_number_of_hired_item = Entry(main_window)
     entry_number_of_hired_item.grid(row=8, column=1)
-    Label(main_window, text="Delete row #", font=("Helvetica", 9)).grid(row=9, column=1)
+    Label(main_window, text="Delete row #", font=("Helvetica", 9)).grid(row=11, column=1)
     entry_delete_row = Entry(main_window)
-    entry_delete_row.grid(row=10, column=1)
+    entry_delete_row.grid(row=12, column=1)
     # Create buttons
     Button(main_window, text="Append details", font=("Helvetica bold", 8),
-           command=check_inputs).grid(row=7,column=2)
+           command=check_inputs).grid(row=9,column=1)
     Button(main_window, text="Print details", font=("Helvetica bold", 8),
-           command=print_tracker_details()).grid(row=8, column=2)
+           command=print_tracker_details()).grid(row=9, column=2)
     Button(main_window, text="Delete", font=("Helvetica bold", 8),
-           command=delete_row).grid(row=10, column=2)
+           command=delete_row).grid(row=12, column=2)
     Button(main_window, text="Quit program", font=("Helvetica bold", 8),
            command=quit).grid(row=0, column=40)
 
@@ -58,8 +58,9 @@ def check_inputs():
         Label(main_window, fg="red", text="Requiredc1").grid(column=2, row=6)
         input_check = 1
     # Check that number of hired is not blank and is between 1-500, set error text if blank
-    if len(entry_number_of_hired_item.get()) == 0:
-        Label(main_window, fg="red", text="Required.nofht").grid(column=2, row=8)
+    if (entry_number_of_hired_item.get().isdigit()):
+        if int(entry_number_of_hired_item.get()) < 1 or int(entry_number_of_hired_item()) > 500:
+            Label(main_window, fg="red", text="Required Between 1-500").grid(column=2, row=8)
         input_check = 1
 
 
