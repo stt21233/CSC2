@@ -5,6 +5,7 @@ from tkinter import *
 
 main_window = Tk()
 
+
 # entry boxes details and buttons
 def setup_buttons():
     global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
@@ -17,7 +18,7 @@ def setup_buttons():
     Label(main_window, text="Item hired", font=("Helvetica", 9)).grid(row=5, column=1)
     entry_hired_item = Entry(main_window)
     entry_hired_item.grid(row=6, column=1)
-    Label(main_window, text="Number of hired items",font=("Helvetica", 9)).grid(row=7, column=1)
+    Label(main_window, text="Number of hired items", font=("Helvetica", 9)).grid(row=7, column=1)
     entry_number_of_hired_item = Entry(main_window)
     entry_number_of_hired_item.grid(row=8, column=1)
     Label(main_window, text="Delete row #", font=("Helvetica", 9)).grid(row=11, column=1)
@@ -25,13 +26,14 @@ def setup_buttons():
     entry_delete_row.grid(row=12, column=1)
     # Create buttons
     Button(main_window, text="Append details", font=("Helvetica bold", 8),
-           command=check_inputs).grid(row=9,column=1)
+           command=check_inputs).grid(row=9, column=1)
     Button(main_window, text="Print details", font=("Helvetica bold", 8),
            command=print_tracker_details).grid(row=9, column=2)
     Button(main_window, text="Delete", font=("Helvetica bold", 8),
            command=delete_row).grid(row=12, column=2)
     Button(main_window, text="Quit program", font=("Helvetica bold", 8),
            command=quit).grid(row=0, column=40)
+
 
 # Check Inputs
 def check_inputs():
@@ -43,12 +45,11 @@ def check_inputs():
     Label(main_window, text="                        ").grid(column=2, row=8)
     # Check that Customer full name is not blank, set error text if blank
     if len(entry_name.get()) == 0:
-        Label(main_window, fg="red", text="Required") .grid(column=2, row=2)
+        Label(main_window, fg="red", text="Required").grid(column=2, row=2)
         input_check = 1
     # Check the number of receipt number is not blank and is a integer, set error text if blank
     if (entry_receipt.get().isdigit()):
         Label(main_window, fg="red", text="                 ").grid(column=2, row=4)
-        input_check = 1
     else:
         Label(main_window, fg="red", text="Number Only").grid(column=2, row=4)
         input_check = 1
@@ -66,7 +67,8 @@ def check_inputs():
         Label(main_window, fg="red", text="Between 1-500").grid(column=2, row=8)
         input_check = 1
     if input_check == 0:
-        append_name()
+        append_detail()
+
 
 # Print Tracker Details
 def print_tracker_details():
@@ -86,6 +88,7 @@ def print_tracker_details():
           text="Number of Hired Items").grid(column=16, row=2)
     Label(main_window, font=("Helvetica 10 bold"))
 
+
 # add each item in the list into its own row
     while name_count < total_entries:
         Label(main_window, text=name_count).grid(column=12, row=name_count+8)
@@ -100,14 +103,12 @@ def print_tracker_details():
         name_count += 1
 
 
-
-
-def append_name():
+def append_detail():
     # these are the global variables that are used
     global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, total_entries
     # append each item to its own area of the list
     customer_details.append([entry_name.get(), entry_receipt.get(),
-                         entry_hired_item.get(), entry_number_of_hired_item.get()])
+                             entry_hired_item.get(), entry_number_of_hired_item.get()])
     # clear the boxes
     entry_name.delete(0, 'end')
     entry_receipt.delete(0, 'end')
@@ -119,15 +120,15 @@ def delete_row():
     # these are the global variables that are used
     global print_tracker_details, delete_item, total_entries, name_count
     # find which row is to be deleted and delete it
-    del customer_details[int(delete_item.get())]
+    del customer_details[int(entry_delete_row.get())]
     total_entries = total_entries - 1
     delete_item.delete(0, 'end')
     # clear the last item displayed on the GUI
-    Label(main_window, text="       ").grid(column=0, row=name_count+7)
-    Label(main_window, text="       ").grid(column=1, row=name_count+7)
-    Label(main_window, text="       ").grid(column=2, row=name_count+7)
-    Label(main_window, text="       ").grid(column=3, row=name_count+7)
-    Label(main_window, text="       ").grid(column=4, row=name_count+7)
+    Label(main_window, text="             ").grid(column=12, row=name_count+2)
+    Label(main_window, text="             ").grid(column=13, row=name_count+2)
+    Label(main_window, text="             ").grid(column=14, row=name_count+2)
+    Label(main_window, text="             ").grid(column=15, row=name_count+2)
+    Label(main_window, text="             ").grid(column=16, row=name_count+2)
     # print all the items in the list
     print_tracker_details()
 
