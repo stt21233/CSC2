@@ -58,7 +58,7 @@ def check_inputs():
     if len(entry_hired_item.get()) == 0:
         Label(main_window, fg="red", text="Required").grid(column=2, row=6)
         input_check = 1
-    # Check that number of hired is not blank and is between 1-500, set error text if blank
+        # Check that number of hired is not blank and is between 1-500, set error text if blank
     if (entry_number_of_hired_item.get().isdigit()):
         if int(entry_number_of_hired_item.get()) < 1 or int(entry_number_of_hired_item.get()) > 500:
             Label(main_window, fg="red", text="between 1-500").grid(column=2, row=8)
@@ -91,15 +91,15 @@ def print_tracker_details():
 
 # add each item in the list into its own row
     while name_count < total_entries:
-        Label(main_window, text=name_count).grid(column=12, row=name_count+8)
+        Label(main_window, text=name_count).grid(column=12, row=name_count + 3)
         Label(main_window, text=(customer_details[name_count][0])).grid(
-            column=13, row=name_count+8)
+            column=13, row=name_count+3)
         Label(main_window, text=(customer_details[name_count][1])).grid(
-            column=14, row=name_count+8)
+            column=14, row=name_count+3)
         Label(main_window, text=(customer_details[name_count][2])).grid(
-            column=15, row=name_count+8)
+            column=15, row=name_count+3)
         Label(main_window, text=(customer_details[name_count][3])).grid(
-            column=16, row=name_count+8)
+            column=16, row=name_count+3)
         name_count += 1
 
 
@@ -122,13 +122,13 @@ def delete_row():
     # find which row is to be deleted and delete it
     del customer_details[int(entry_delete_row.get())]
     total_entries = total_entries - 1
-    delete_item.delete(0, 'end')
+    entry_delete_row.delete(0, 'end')
     # clear the last item displayed on the GUI
-    Label(main_window, text="             ").grid(column=12, row=name_count+2)
-    Label(main_window, text="             ").grid(column=13, row=name_count+2)
-    Label(main_window, text="             ").grid(column=14, row=name_count+2)
-    Label(main_window, text="             ").grid(column=15, row=name_count+2)
-    Label(main_window, text="             ").grid(column=16, row=name_count+2)
+    Label(main_window, text="                 ").grid(column=12, row=name_count + 2)
+    Label(main_window, text="                 ").grid(column=13, row=name_count + 2)
+    Label(main_window, text="                 ").grid(column=14, row=name_count + 2)
+    Label(main_window, text="                 ").grid(column=15, row=name_count + 2)
+    Label(main_window, text="                 ").grid(column=16, row=name_count + 2)
     # print all the items in the list
     print_tracker_details()
 
