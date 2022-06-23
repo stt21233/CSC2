@@ -35,7 +35,7 @@ def setup_buttons():
 
 # Check Inputs
 def check_inputs():
-    global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
+    global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, total_entries
     input_check = 0
     Label(main_window, text="                        ").grid(column=2, row=2)
     Label(main_window, text="                        ").grid(column=2, row=4)
@@ -83,7 +83,7 @@ def print_tracker_details():
     Label(main_window, font=("Helvetica 10 bold"),
           text="Item Hired").grid(column=15, row=2)
     Label(main_window, font=("Helvetica 10 bold"),
-          text="Number of Hired items").grid(column=16, row=2)
+          text="Number of Hired Items").grid(column=16, row=2)
     Label(main_window, font=("Helvetica 10 bold"))
 
 # add each item in the list into its own row
@@ -104,9 +104,9 @@ def print_tracker_details():
 
 def append_name():
     # these are the global variables that are used
-    global print_tracker_details, customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, total_entries
+    global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, total_entries
     # append each item to its own area of the list
-    total_entries.append([entry_name.get(), entry_receipt.get(),
+    customer_details.append([entry_name.get(), entry_receipt.get(),
                          entry_hired_item.get(), entry_number_of_hired_item.get()])
     # clear the boxes
     entry_name.delete(0, 'end')
