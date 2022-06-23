@@ -7,7 +7,7 @@ main_window = Tk()
 
 # entry boxes details and buttons
 def setup_buttons():
-    global entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
+    global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
     Label(main_window, text="Customer full name", font=("Helvetica bold", 9)).grid(row=1, column=1)
     entry_name = Entry(main_window)
     entry_name.grid(row=2, column=1)
@@ -35,7 +35,7 @@ def setup_buttons():
 
 # Check Inputs
 def check_inputs():
-    global entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
+    global customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, entry_delete_row, total_entries
     input_check = 0
     Label(main_window, text="                        ").grid(column=2, row=2)
     Label(main_window, text="                        ").grid(column=2, row=4)
@@ -65,36 +65,8 @@ def check_inputs():
     else:
         Label(main_window, fg="red", text="Between 1-500").grid(column=2, row=8)
         input_check = 1
-
-
-def append_name():
-    # these are the global variables that are used
-    global entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, total_entries
-    # append each item to its own area of the list
-    total_entries.append([entry_name.get(), entry_receipt.get(),
-                         entry_hired_item.get(), entry_number_of_hired_item.get()])
-    # clear the boxes
-    entry_name.delete(0, 'end')
-    entry_receipt.delete(0, 'end')
-    entry_hired_item.delete(0, 'end')
-    entry_number_of_hired_item.delete(0, 'end')
-    total_entries
-
-def delete_row():
-    # these are the global variables that are used
-    global print_tracker_details, delete_item, total_entries, name_count
-    # find which row is to be deleted and delete it
-    del print_tracker_details[int(delete_item.get())]
-    total_entries = total_entries - 1
-    delete_item.delete(0, 'end')
-    # clear the last item displayed on the GUI
-    Label(main_window, text="       ").grid(column=0, row=name_count+7)
-    Label(main_window, text="       ").grid(column=1, row=name_count+7)
-    Label(main_window, text="       ").grid(column=2, row=name_count+7)
-    Label(main_window, text="       ").grid(column=3, row=name_count+7)
-    Label(main_window, text="       ").grid(column=4, row=name_count+7)
-    # print all the items in the list
-    print_tracker_details()
+    if input_check == 0:
+        append_name()
 
 # Print Tracker Details
 def print_tracker_details():
@@ -127,6 +99,37 @@ def print_tracker_details():
             column=16, row=name_count+8)
         name_count += 1
 
+
+
+
+def append_name():
+    # these are the global variables that are used
+    global print_tracker_details, customer_details, entry_name, entry_receipt, entry_hired_item, entry_number_of_hired_item, total_entries
+    # append each item to its own area of the list
+    total_entries.append([entry_name.get(), entry_receipt.get(),
+                         entry_hired_item.get(), entry_number_of_hired_item.get()])
+    # clear the boxes
+    entry_name.delete(0, 'end')
+    entry_receipt.delete(0, 'end')
+    entry_hired_item.delete(0, 'end')
+    entry_number_of_hired_item.delete(0, 'end')
+    total_entries += 1
+
+def delete_row():
+    # these are the global variables that are used
+    global print_tracker_details, delete_item, total_entries, name_count
+    # find which row is to be deleted and delete it
+    del customer_details[int(delete_item.get())]
+    total_entries = total_entries - 1
+    delete_item.delete(0, 'end')
+    # clear the last item displayed on the GUI
+    Label(main_window, text="       ").grid(column=0, row=name_count+7)
+    Label(main_window, text="       ").grid(column=1, row=name_count+7)
+    Label(main_window, text="       ").grid(column=2, row=name_count+7)
+    Label(main_window, text="       ").grid(column=3, row=name_count+7)
+    Label(main_window, text="       ").grid(column=4, row=name_count+7)
+    # print all the items in the list
+    print_tracker_details()
 
 
 # Create GUI and make sure entry boxes and button are appearing
